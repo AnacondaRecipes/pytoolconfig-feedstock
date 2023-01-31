@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/bagel897/pytoolconfig/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 077daa343e0b865f30eadbd2a2fc778983a526311dd44f8ae31d17ba5bc1b126
+  sha256: 2d5ee0ed520662f3a895d2890c3e25e2250e58cdf0d2ca6d9e38214a6da22bf1
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
