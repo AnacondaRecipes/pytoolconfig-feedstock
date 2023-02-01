@@ -15,7 +15,6 @@ build:
 
 requirements:
   host:
-    - pip
     - pdm
     - pdm-pep517
     - python
@@ -43,6 +42,7 @@ about:
     Python tool configuration.
   license: LGPL-3.0-or-later
   license_family: LGPL
+  license_url: https://github.com/bagel897/pytoolconfig/blob/main/LICENSE
   doc_url: https://github.com/bagel897/pytoolconfig/blob/main/README.md
 
 extra:
