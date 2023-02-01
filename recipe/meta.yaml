@@ -17,14 +17,14 @@ requirements:
   host:
     - pip
     - pdm
-    - pdm-pep517 >=1.0.5
+    - pdm-pep517
     - python
     - setuptools
     - wheel
   run:
     - packaging >=22.0
     - python
-    - tomli >=1.2.3  # [py<311]
+    - tomli >=2.0.1  # [py<311]
     - typing-extensions >=4.4.0  # [py<38]
 
 test:
@@ -42,8 +42,7 @@ about:
   description: |
     Python tool configuration.
   license: LGPL-3.0-or-later
-  license_file: LICENSE
-  license_url: https://github.com/bagel897/pytoolconfig/blob/main/LICENSE
+  license_family: LGPL
   doc_url: https://github.com/bagel897/pytoolconfig/blob/main/README.md
 
 extra:
