@@ -9,12 +9,13 @@ source:
   sha256: 077daa343e0b865f30eadbd2a2fc778983a526311dd44f8ae31d17ba5bc1b126
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
   skip: True # [py<37]
   number: 0
 
 requirements:
   host:
+    - pip
     - pdm
     - pdm-pep517
     - python
