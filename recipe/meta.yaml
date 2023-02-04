@@ -1,29 +1,34 @@
-{% set version = "1.2.4" %}
+{% set version = "1.2.5" %}
 
 package:
   name: pytoolconfig
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pytoolconfig/pytoolconfig-{{ version }}.tar.gz
-  sha256: 5e1a246f77970ddb5f3d8d06fbf162424b8a1adfc22c2eb51826b383bf293d1e
+  url: https://github.com/bagel897/pytoolconfig/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 077daa343e0b865f30eadbd2a2fc778983a526311dd44f8ae31d17ba5bc1b126
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
-  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  skip: True # [py<37]
   number: 1
+  script_env:
+    - PDM_PEP517_SCM_VERSION={{ version }}
 
 requirements:
   host:
-    - pip <22
+    - pip
     - pdm
-    - pdm-pep517 >=1.0.5
-    - python >=3.7
+    - pdm-pep517
+    - python
+    - setuptools
+    - wheel
   run:
     - packaging >=22.0
-    - python >=3.7
-    - tomli >=2.0.1
-    - typing-extensions >=4.4.0
+    - python
+    - tomli >=2.0.1  # [py<311]
+    - typing-extensions >=4.4.0  # [py<38]
+    - platformdirs
 
 test:
   imports:
@@ -34,10 +39,15 @@ test:
     - pip
 
 about:
-  home: https://pypi.org/project/pytoolconfig
+  home: https://github.com/bagel897/pytoolconfig
+  dev_url: https://github.com/bagel897/pytoolconfig
   summary: Python tool configuration
+  description: |
+    Python tool configuration.
   license: LGPL-3.0-or-later
-  license_file: LICENSE
+  license_family: LGPL
+  license_url: https://github.com/bagel897/pytoolconfig/blob/main/LICENSE
+  doc_url: https://github.com/bagel897/pytoolconfig/blob/main/README.md
 
 extra:
   recipe-maintainers:
