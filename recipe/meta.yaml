@@ -1,4 +1,4 @@
-{% set version = "1.2.5" %}
+{% set version = "1.2.6" %}
 
 package:
   name: pytoolconfig
@@ -6,29 +6,25 @@ package:
 
 source:
   url: https://github.com/bagel897/pytoolconfig/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 077daa343e0b865f30eadbd2a2fc778983a526311dd44f8ae31d17ba5bc1b126
+  sha256: c059be8047a10ca5b886614d332d066ba8766633b8da4665295089a0d11fe717
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: True # [py<37]
-  number: 1
+  number: 0
   script_env:
-    - PDM_PEP517_SCM_VERSION={{ version }}
+    - PDM_BUILD_SCM_VERSION={{ version }}
 
 requirements:
   host:
-    - pip
-    - pdm
-    - pdm-pep517
     - python
-    - setuptools
-    - wheel
+    - pip
+    - pdm-backend >=1.0.5
   run:
     - packaging >=22.0
     - python
     - tomli >=2.0.1  # [py<311]
     - typing-extensions >=4.4.0  # [py<38]
-    - platformdirs
 
 test:
   imports:
